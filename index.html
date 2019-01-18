@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <style>
+      img {width: 100%}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+          <v-toolbar color="blue" dark>
+              <h1>InnerCircle Unblur</h1>
+              <v-spacer></v-spacer> by <a class="ml-2 white--text" href="https://github.com/NoctalIvan/innerCircleUnblur" target="_blank">NoctalIvan</a>
+          </v-toolbar>
+        <v-container>
+            <v-layout>
+                <v-flex xs6 class="px-2">
+                    <p>Blurred photo</p>
+                    <v-text-field
+                        label="url"
+                        v-model="url"
+                    ></v-text-field>
+                    <img :src="url"/>
+                </v-flex>
+                <v-flex xs6 class="px-2">
+                    <p>Unblurred photo</p>
+                    <img :src="unblurredUrl"/>
+                </v-flex>
+            </v-layout>
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script>
+    new Vue({ 
+        el: '#app',
+        data() {
+            return {
+                url: ''
+            }
+        },
+        computed: {
+            unblurredUrl() {
+                return this.url.replace('hidden', 'picture')
+            }
+        }
+    })
+  </script>
+</body>
+</html>
